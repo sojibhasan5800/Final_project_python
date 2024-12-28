@@ -9,11 +9,14 @@ def Cheking_User_data(x,users):
         if ( users=="Registration" and ( x<1 or x>4)  ):
             print(f"Place Sir given This Number (1 to 4) are inclusive")
             return False
-        elif(users=="Admin" and ( x<1 or x>7) ):
-            print(f"Place Sir given This Number (1 to 7) are inclusive")
-            return False
-        elif(users=="Customer" and ( x<1 or x>8) ):
+        elif(users=="Admin" and ( x<1 or x>8) ):
             print(f"Place Sir given This Number (1 to 8) are inclusive")
+            return False
+        elif(users=="Customer_inner_page" and ( x<1 or x>8) ):
+            print(f"Place Sir given This Number (1 to 8) are inclusive")
+            return False
+        elif(users=="Customer_main_page" and ( x<1 or x>4) ):
+            print(f"Place Sir given This Number (1 to 4) are inclusive")
             return False
         elif(users=="Seller_exchange" and ( x<1 or x>3) ):
             print(f"Place Sir given This Number (1 to 3) are inclusive")
@@ -61,8 +64,22 @@ def is_strong_password(password):
     return re.match(pattern, password) is not None
        
 
-def user_data_check(user_name:str,user_email:str,user_Number:str,user_password:str,user_retype_password:str):
+def user_data_check(user:str,codeOrAtype:str,user_name:str,user_email:str,user_Number:str,user_password:str,user_retype_password:str):
     invalid_list=[]
+    if(user=="Admin"):
+        if( not codeOrAtype.isdigit()):
+            invalid_code = f"This Branch Code is '{codeOrAtype}' is Invalid Code Must be Integer!!"
+            invalid_list.append(invalid_code)
+
+    elif(user=="Customer"):
+        if( not codeOrAtype.isdigit()):
+            invalid_code = f"This Account_Type Code is '{codeOrAtype}' is Invalid Code Must be Integer (1 to 2) Inclusive!!"
+            invalid_list.append(invalid_code)
+        choice = int(codeOrAtype)
+        if (not(choice>=1 and choice<=2)):
+            invalid_type=f"Place Sir choice Account_Type (1 to 2) Inclusive "
+            invalid_list.append(invalid_type)
+
     if not (is_valid_mail(user_email)):
         invalid_mail = f"This Mail {user_email} is invalid"
         invalid_list.append(invalid_mail)
@@ -103,6 +120,12 @@ def inside_checking(users_check="Admin"):
      elif(users_check=="Invalid_promt"):
          print("If you again Added Item  press     (1): ")
          print("If you  Not again Added Item press (0): ")
+     elif(users_check=="Account_create"):
+         print("If you again Create  Account     press     (1): ")
+         print("If you  Not again Create Account press     (0): ")
+     elif(users_check=="Account_Login"):
+         print("If you again  Login     press     (1): ")
+         print("If you  Not again Login press     (0): ")
      elif(users_check=="cus_Amount"):
          print("If you again Added Amount  press     (1): ")
          print("Otherwise you exit then Press        (0) :")

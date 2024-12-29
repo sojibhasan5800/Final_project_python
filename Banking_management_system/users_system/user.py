@@ -1,10 +1,11 @@
 import os
 import sys
-sys.path.append(r"Banking\Final_project_python\Banking_management_system")
+# sys.path.append(r"Banking\Final_project_python\Banking_management_system")
 from sys_needed_part.valid_check_sys.valid_data import Cheking_User_data,inside_checking
 from sys_needed_part.Registration_from.reg import reg_display_from
-from users_data_store_sys.user_data_store import account_exit
-from users_service_sys.user_service import customer_service_display_data
+from users_system.users_data_store_sys.user_data_store import account_exit
+from users_system.users_service_sys.user_service import customer_service_display_data
+
 #---------customer_dispaly_Entry-----------------
 customer_dis_list=[]
 customer_dis_list.append(" (1) Create An User's Account  Enter                     : ")

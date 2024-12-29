@@ -70,18 +70,18 @@ def customer_service_display_data(account_obj):
                     account_number = int(input())
                     print(f"Enter the Transfer Ammount: ")
                     amount = int(input())
-                    account_obj.transaction_another_account(amount)
+                    account_obj.transaction_another_account(account_number,amount)
                 except Exception as e:
                     print(f"{e} : Place Given Only Digit!!")
                     continue
-            elif(x==3):
+            elif(x==7):
                 #------------Back_return_main_page----------
                 return "customer_main_page"  
             elif(x==8):
                 #-----------Exit_Programme------------
                 print("Exiting system. Goodbye!")
                 print(f"-----------------------")
-                return 
+                return "system_exit"
                 
                 
             

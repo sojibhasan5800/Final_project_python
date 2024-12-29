@@ -3,10 +3,10 @@ import random
 #-----------Seller & Customer_Account Store-----------
        
 class Account:
-    __admin_account_store={} # key : account_id ,key_value: name,email_id,number,password,user
-    __customer_account_store={} # key : account_id ,key_value: name,email_id,number,password,user
+    _admin_account_stores={} # key : account_id ,key_value: name,email_id,number,password,user
+    _customer_account_stores={} # key : account_id ,key_value: name,email_id,number,password,user
     __store_user_id=set() # value: unique user id
-    __cus_store_obj={} #key : seller_email , value: customer_obj
+    _cus_store_obj={} #key : seller_email , value: customer_obj
     __admin_store_obj={} # key : customer_email, value : admin_obj
     
     
@@ -21,28 +21,29 @@ class Account:
     def customer_account_store(self,user_cus_name, user_cus_email,user_cus_Number,user_cus_Password,user,user_cus_adress,account_type):
                                                                         
           account_id = Account._generate_emp_id(None)
-          Account.__customer_account_store[account_id]={
+          Account._customer_account_stores[account_id]={
            "Name": user_cus_name,
            "Email_id":user_cus_email,
            "Phone_Number":user_cus_Number,
            "Password":user_cus_Password,
            "User" : user,
-           "User_Adress":user_cus_adress,
+           "User_Address":user_cus_adress,
            "Account_type":account_type
 
           }
+
           return account_id
     
     def admin_account_store(self,user_cus_name, user_cus_email,user_cus_Number,user_cus_Password,user,user_cus_adress,branch_code):
                                                                         
           account_id = Account._generate_emp_id(None)
-          Account.__admin_account_store[account_id]={
+          Account._admin_account_stores[account_id]={
            "Name": user_cus_name,
            "Email_id":user_cus_email,
            "Phone_Number":user_cus_Number,
            "Password":user_cus_Password,
            "User" : user,
-           "User_Adress":user_cus_adress,
+           "User_Address":user_cus_adress,
            "Branch_Code":branch_code
 
           }
@@ -58,7 +59,7 @@ class Account:
     
     def mail_matching(self,user_cus_email,user_cus_password):
          
-         for user_id, details in Account.__customer_account_store.items():
+         for user_id, details in Account._customer_account_stores.items():
             if details["Email_id"] == user_cus_email and details["Password"] == user_cus_password:
                 if(details["User"]=="Seller"):
                     return True,user_id,details["User"],Account.__shop_store_obj[user_cus_email]
@@ -69,21 +70,21 @@ class Account:
     
     def duplicated_mail_checking(self,user_cus_mail,users):
         if(users=="Customer"):
-            if user_cus_mail in Account.__cus_store_obj.keys():
+            if user_cus_mail in Account._cus_store_obj.keys():
                 return False
         return True
     
     def get_admin_len(self):
-        if (len(Account.__admin_account_store) <=1):
+        if (len(Account._admin_account_stores) <=1):
             return True
         else:
             return False
     
 #---------- Adnmin_account_service---------
 def admin_account_len():
-    return Account.get_admin_len()
+    return Account.get_admin_len(None)
 def admin_person_eixt():
-    return len(Account.__admin_account_store)
+    return len(Account._admin_account_stores)
 
 
 

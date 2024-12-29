@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append(r"Banking\Final_project_python\Banking_management_system\sys_needed_part")
+
 from sys_needed_part.valid_check_sys.valid_data import Cheking_User_data,inside_checking
 from sys_needed_part.Registration_from.reg import reg_display_from
 #---------admin_dispaly_Entry-----------------
@@ -68,13 +68,18 @@ def admin_display_data(admin_obj):
             elif(x==6):
 
                 #-----------On or Off The Loan Feature Of The Bank----------
-                print("On The Loan  Service  Press (1) : ")
-                print("Off The Loan Service  Press (0) : ")
-                on_off = input()
-                if(on_off.isdigit() and (on_off>=0 and on_off<=1)):
-                    admin_obj.checkout_loan_service(on_off)
-                else:
-                    print(f"Invalid Number '{on_off}' Choice Place try Again!!")
+                try:
+                    
+                    print("On The Loan  Service  Press (1) : ")
+                    print("Off The Loan Service  Press (0) : ")
+                    on_off = int( input())
+                    if( (on_off>=0 and on_off<=1)):
+                        admin_obj.checkout_loan_service(on_off)
+                    else:
+                        print(f"Invalid Number '{on_off}' Choice (1 or 2) Place try Again!!")
+                except Exception as e:
+                    print("Place Given (1 or 2) digit !!")
+                    continue
 
             elif(x==7):
                 #------------Back_return_main_page----------

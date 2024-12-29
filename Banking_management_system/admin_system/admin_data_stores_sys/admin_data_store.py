@@ -2,11 +2,10 @@
 import os
 import sys
 from tabulate import tabulate
-sys.path.append(r"Banking\Final_project_python\Banking_management_system\sys_needed_part")
 from users_system.users_data_store_sys.user_data_store import Bank_Store_manager
 from sys_needed_part.data_store.store import Account
 class Admin_Store_manager:
-    __admin_account_list={} # key: account_id,value: cus_account_obj
+    __admin_account_list={} # key: account_id,value: admin_account_obj
     
 
     def __init__(self,admin_name):
@@ -37,18 +36,22 @@ class Admin_Store_manager:
         return Admin_Store_manager.__admin_account_list[account_number]
     
     def user_account_delete(self,delete_account_id):
-        if delete_account_id not in Bank_Store_manager.__account_list.keys():
+        if delete_account_id not in Bank_Store_manager._account_list.keys():
             print(f"This deleted Account Number '{delete_account_id}' do not Exit! Place Try Again")
         else:
-            del Bank_Store_manager.__account_list[delete_account_id]
-            del Account.__customer_account_store[delete_account_id]
+            del Bank_Store_manager._account_list[delete_account_id]
+            del Account._customer_account_stores[delete_account_id]
             print(f"Acccount_Id : '{delete_account_id}' Removed Successfully")
 
     def customer_total_account_lst_bank(self):
 
+        if len(Account._customer_account_stores) == 0:
+            print("The list is empty.")
+            return 
+
         headers = ["Account ID", "Name", "Email ID", "Phone Number", "Password", "User", "User Address", "Account Type"]
         table = []
-        for account_id, data in Account.__customer_account_store.items():
+        for account_id, data in Account._customer_account_stores.items():
 
             # Mask the password with asterisks
             masked_password = '*' * len(data["Password"])
@@ -69,17 +72,17 @@ class Admin_Store_manager:
         print(tabulate(table, headers=headers, tablefmt="fancy_grid", colalign=("center", "center", "center")))
 
     def get_total_balance_bank(self):
-        print(f"Our Bank Total Amount is :'{Bank_Store_manager.__bank_account_balance}' tk.")
+        print(f"Our Bank Total Amount is :'{Bank_Store_manager._bank_account_balance}' tk.")
 
     def get_show_loan_bank(self):
-        print(f"Our Bank Total Loan Given is :'{Bank_Store_manager.___total_loan}' tk.")
+        print(f"Our Bank Total Loan Given is :'{Bank_Store_manager._total_loan}' tk.")
 
     def checkout_loan_service(self,on_off):
-        if(on_off=="1"):
-            Bank_Store_manager.__loan_service = True
+        if(on_off==1):
+            Bank_Store_manager._loan_service = True
             print("Loan Service On Successfully")
-        elif(on_off=="0"):
-            Bank_Store_manager.__loan_service = False
+        elif(on_off==0):
+            Bank_Store_manager._loan_service = False
             print("Loan Service On Successfully")
         
 
@@ -92,6 +95,6 @@ class Admin_Store_manager:
 def create_admin_obj(user_cus_name,user_cus_email,user_cus_Number,admin_account_id,user,user_cus_adress,branch_code):
     admin_obj = Admin_Store_manager(user_cus_name)
     admin_obj.add_admin_store_info(user_cus_email,user_cus_Number,admin_account_id,user_cus_adress,user,branch_code)
-
+    
 def admin_account_exit(account_number):
     return Admin_Store_manager.get_account_obj(None,account_number)

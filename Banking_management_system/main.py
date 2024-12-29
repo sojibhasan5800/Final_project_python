@@ -2,10 +2,12 @@
 import re
 import os
 import sys
-sys.path.append(r"Banking\Final_project_python\Banking_management_system")
+# sys.path.append(r"Banking\Final_project_python\Banking_management_system")
 
 from sys_needed_part.valid_check_sys.valid_data import Cheking_User_data,inside_checking
+# from users_system.user import customer_display_data
 from users_system.user import customer_display_data
+from admin_system.admin import admin_display_data
 from sys_needed_part.Registration_from.reg import reg_display_from,login_display_from
 from sys_needed_part.data_store.store import admin_account_len,admin_person_eixt
 
@@ -41,7 +43,11 @@ while True:
             #----------- Admin Services -----------
             result,admin_name,admin_obj = login_display_from()
             if(result):
-                pass
+                action_main_page = admin_display_data(admin_obj)
+                if(action_main_page == "main_page"):
+                    continue
+                elif(action_main_page =="system_exit"):
+                    break
             else:
                 if(inside_checking("Account_Login")):
                     continue

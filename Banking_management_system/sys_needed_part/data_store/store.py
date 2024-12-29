@@ -20,6 +20,7 @@ class Account:
     
     def customer_account_store(self,user_cus_name, user_cus_email,user_cus_Number,user_cus_Password,user,user_cus_adress,account_type):
                                                                         
+          print("d")
           account_id = Account._generate_emp_id(None)
           Account._customer_account_stores[account_id]={
            "Name": user_cus_name,
@@ -31,11 +32,15 @@ class Account:
            "Account_type":account_type
 
           }
-
+          print(len(Account._customer_account_stores))
           return account_id
     
+    def get_customer_account_len(self):
+        return len(Account._customer_account_stores)
+    
     def admin_account_store(self,user_cus_name, user_cus_email,user_cus_Number,user_cus_Password,user,user_cus_adress,branch_code):
-                                                                        
+
+          print("d")                                                            
           account_id = Account._generate_emp_id(None)
           Account._admin_account_stores[account_id]={
            "Name": user_cus_name,
@@ -85,6 +90,8 @@ def admin_account_len():
     return Account.get_admin_len(None)
 def admin_person_eixt():
     return len(Account._admin_account_stores)
+
+
 
 
 

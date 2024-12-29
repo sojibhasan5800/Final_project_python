@@ -4,7 +4,9 @@ import os
 import sys
 import pyautogui
 import time
-sys.path.append(r"Banking\Final_project_python\Banking_management_system")
+
+# sys.path.append(r"Final_project_python\Banking_management_system\sys_needed_part")
+# sys.path.append(r"Final_project_python\Banking_management_system")
 from sys_needed_part.valid_check_sys.valid_data import user_data_check
 from sys_needed_part.data_store.store import Account,admin_account_len,admin_person_eixt
 
@@ -20,66 +22,67 @@ def reg_display_from(user):
       
     
    if(user=="Admin"):   
-      # print("Enter Bank Branch Code(int): ")
-      # branch_code = str(input()).strip()
-      # branch_code=re.sub(r'\s{2,}',' ',branch_code)
-      # print("Enter Admin First Name : ")
-      # first_name = str(input()).strip()
-      # print("Enter Admin Last  Name : ")
-      # last_name = str(input()).strip()
-      # user_cus_name =first_name + " "+ last_name
-      # user_cus_name=re.sub(r'\s{2,}',' ',user_cus_name)
-      # print("Enter Your Adress : ")
-      # user_cus_adress = str(input()).strip()
-      # print("Enter Phone Number  : ")
-      # user_cus_Number = str(input()).strip()
-      # print("Enter Email  Id  : ")
-      # user_cus_email = str(input()).strip()  
-      # print("Create a strong password: ")
-      # user_cus_Password = str(input()).strip()
-      # print("Retype your password: ")
-      # user_retype_cus_password = str(input()).strip()
+      print("Enter Bank Branch Code(int): ")
+      branch_code = str(input()).strip()
+      branch_code=re.sub(r'\s{2,}',' ',branch_code)
+      print("Enter Admin First Name : ")
+      first_name = str(input()).strip()
+      print("Enter Admin Last  Name : ")
+      last_name = str(input()).strip()
+      user_cus_name =first_name + " "+ last_name
+      user_cus_name=re.sub(r'\s{2,}',' ',user_cus_name)
+      print("Enter Your Adress : ")
+      user_cus_adress = str(input()).strip()
+      print("Enter Phone Number  : ")
+      user_cus_Number = str(input()).strip()
+      print("Enter Email  Id  : ")
+      user_cus_email = str(input()).strip()  
+      print("Create a strong password: ")
+      user_cus_Password = str(input()).strip()
+      print("Retype your password: ")
+      user_retype_cus_password = str(input()).strip()
 
-      branch_code = "101" # Example branch code
-      first_name = "John"
-      last_name = "Doe"
-      user_cus_name = re.sub(r'\s{2,}', ' ', f"{first_name} {last_name}")
-      user_cus_adress = "123 Main Street, Springfield"
-      user_cus_Number = "01623966595"
-      user_cus_email = "john.doe@example.com"
-      user_cus_Password = "StrongPassword123@"
-      user_retype_cus_password = "StrongPassword123@"
+      # branch_code = "101" # Example branch code
+      # first_name = "John"
+      # last_name = "Doe"
+      # user_cus_name = re.sub(r'\s{2,}', ' ', f"{first_name} {last_name}")
+      # user_cus_adress = "123 Main Street, Springfield"
+      # user_cus_Number = "01623966595"
+      # user_cus_email = "john.doe@example.com"
+      # user_cus_Password = "StrongPassword123@"
+      # user_retype_cus_password = "StrongPassword123@"
 
    elif(user=="Customer"):
 
-      # print("Enter User's First Name : ")
-      # first_name = str(input()).strip()
-      # print("Enter User's Last  Name : ")
-      # last_name = str(input()).strip()
-      # user_cus_name =first_name + " "+ last_name
-      # user_cus_name=re.sub(r'\s{2,}',' ',user_cus_name)
-      # print("Enter Your Adress : ")
-      # user_cus_adress = str(input()).strip()
-      # print("Enter Phone Number  : ")
-      # user_cus_Number = str(input()).strip()
-      # print("Enter Email  Id  : ")
-      # user_cus_email = str(input()).strip()  
-      # print("Create a strong password: ")
-      # user_cus_Password = str(input()).strip()
-      # print("Retype your password: ")
-      # user_retype_cus_password = str(input()).strip()
-      # print("Enter Choice Account Type : ")
-      # print("(1) Svaing Account  (2) Current Account")
-      # account_type = str(input())
-      account_type = "1" # Example branch code
-      first_name = "abol"
-      last_name = "Doe"
-      user_cus_name = re.sub(r'\s{2,}', ' ', f"{first_name} {last_name}")
-      user_cus_adress = "123 Main Street, Springfield"
-      user_cus_Number = "01623966595"
-      user_cus_email = "john.doe@example.com"
-      user_cus_Password = "StrongPassword123@"
-      user_retype_cus_password = "StrongPassword123@"
+      print("Enter User's First Name : ")
+      first_name = str(input()).strip()
+      print("Enter User's Last  Name : ")
+      last_name = str(input()).strip()
+      user_cus_name =first_name + " "+ last_name
+      user_cus_name=re.sub(r'\s{2,}',' ',user_cus_name)
+      print("Enter Your Adress : ")
+      user_cus_adress = str(input()).strip()
+      print("Enter Phone Number  : ")
+      user_cus_Number = str(input()).strip()
+      print("Enter Email  Id  : ")
+      user_cus_email = str(input()).strip()  
+      print("Create a strong password: ")
+      user_cus_Password = str(input()).strip()
+      print("Retype your password: ")
+      user_retype_cus_password = str(input()).strip()
+      print("Enter Choice Account Type : ")
+      print("(1) Svaing Account  (2) Current Account")
+      account_type = str(input())
+      
+      # account_type = "1" # Example branch code
+      # first_name = "abol"
+      # last_name = "Doe"
+      # user_cus_name = re.sub(r'\s{2,}', ' ', f"{first_name} {last_name}")
+      # user_cus_adress = "123 Main Street, Springfield"
+      # user_cus_Number = "01623966595"
+      # user_cus_email = "john.doe@example.com"
+      # user_cus_Password = "StrongPassword123@"
+      # user_retype_cus_password = "StrongPassword123@"
 
 
  
@@ -104,6 +107,7 @@ def reg_display_from(user):
          user_create_account_obj(user_cus_name,user_cus_email,user_cus_Number,account_id,user_cus_adress,account_type)
          return True,account_id,user_cus_name
    else:
+      print()
       return False,False,False    
    
   
@@ -116,17 +120,18 @@ def login_display_from():
       return False,False,False
    try:
          
-      # print("Enter Bank Branch Code : ")
-      # branch_code = (input())
+      print("Enter Bank Branch Code : ")
+      branch_code = (input())
 
       print("Enter The Account Id Number : ")
       account_id = int(input())
 
-      # print("Enter Your Password : ")
-      # admin_password = str(input().strip())
-      branch_code = "101"  # Example branch code
-      # account_id = 987654321  # Example account ID number
-      admin_password = "StrongPassword123@"  # Example admin password
+      print("Enter Your Password : ")
+      admin_password = str(input().strip())
+
+      # branch_code ="101"
+      # admin_password="StrongPassword123@"
+      
 
       
    except Exception as e:

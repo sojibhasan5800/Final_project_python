@@ -2,6 +2,7 @@
 import os
 import sys
 from tabulate import tabulate
+# sys.path.append(r"Final_project_python\Banking_management_system")
 from users_system.users_data_store_sys.user_data_store import Bank_Store_manager
 from sys_needed_part.data_store.store import Account
 class Admin_Store_manager:
@@ -45,10 +46,10 @@ class Admin_Store_manager:
 
     def customer_total_account_lst_bank(self):
 
-        if len(Account._customer_account_stores) == 0:
-            print("The list is empty.")
+        if (Account.get_customer_account_len(None)== 0):
+            print("The list is empty !!.")
             return 
-
+        
         headers = ["Account ID", "Name", "Email ID", "Phone Number", "Password", "User", "User Address", "Account Type"]
         table = []
         for account_id, data in Account._customer_account_stores.items():

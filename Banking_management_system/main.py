@@ -48,11 +48,7 @@ while True:
                     continue
                 elif(action_main_page =="system_exit"):
                     break
-            else:
-                if(inside_checking("Account_Login")):
-                    continue
-                else:
-                    break
+           
             
             
         elif(x==3):

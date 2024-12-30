@@ -11,6 +11,7 @@ class Bank_Store_manager:
     _bank_transaction_history=[]
     _total_loan=0
     _loan_service = True
+    _bankrupt_service = False
 
     def __init__(self,cus_name):
         self.__cus_name = cus_name
@@ -55,7 +56,7 @@ class Bank_Store_manager:
             
     def withdraw_ammount_account(self,amount):
 
-        if(Bank_Store_manager._bank_account_balance <= 0):
+        if(Bank_Store_manager._bankrupt_service == True):
             print(f" The bank is bankrupt !!")
             return
         
@@ -110,6 +111,7 @@ class Bank_Store_manager:
         print(self.__loan_cnt)
         Bank_Store_manager._total_loan+=amount
         Bank_Store_manager._bank_account_balance-=amount
+        self.__balance+=amount
         history = f"Dear '{self.__cus_name}' Loan '{amount}' tk Prospress Successfully"
         his_lst = [history,datetime.now().strftime(" %H:%M:%S %Y-%m-%d"),"Take_Loan"]
         self.transcation_history.append(his_lst)

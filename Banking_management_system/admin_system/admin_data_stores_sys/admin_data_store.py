@@ -36,6 +36,9 @@ class Admin_Store_manager:
     def get_account_obj(self,account_number):
         return Admin_Store_manager.__admin_account_list[account_number]
     
+    def bankrupt_services(self,on_off):
+        Bank_Store_manager._bankrupt_service = on_off
+    
     def user_account_delete(self,delete_account_id):
         if delete_account_id not in Bank_Store_manager._account_list.keys():
             print(f"This deleted Account Number '{delete_account_id}' do not Exit! Place Try Again")
